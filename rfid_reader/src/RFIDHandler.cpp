@@ -1489,6 +1489,13 @@ CMyApplication::awaitAndPrintReport(int timeout)
 		*/
 		delete pMessage;
 	}
+
+	//stop the robot
+	geometry_msgs::Twist vel_msg;
+	vel_msg.linear.x = 0;
+	vel_msg.angular.z = 0;
+	stop_publish.publish(vel_msg);
+
 	return retVal;
 }
 

@@ -97,6 +97,8 @@ float pid_deal_w(float a_data , unsigned long long timestamp)
 
 void pid_pidzero()
 {
-	pid_contral.P_v = 0.08; pid_contral.I_v = 0.001; pid_contral.D_v = 0.0003;
-	pid_contral.P_w = 0.6; pid_contral.I_w = 0.008; pid_contral.D_w = 0.006;
+	//pid_contral.P_v = 0.08; pid_contral.I_v = 0.001; pid_contral.D_v = 0.003;
+	//pid_contral.P_w = 0.6; pid_contral.I_w = 0.008; pid_contral.D_w = 0.006;
+	pid_contral.P_v = 0.000; pid_contral.I_v = 0.000; pid_contral.D_v = 0.000;
+	pid_contral.P_w = 0.0005; pid_contral.I_w = 0.0001; pid_contral.D_w = 0.0001;
 }

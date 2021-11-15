@@ -188,6 +188,8 @@ add_executable(motion_pub src/motion_pub.cpp)
 target_link_libraries(motion_pub ${catkin_LIBRARIES})
 add_dependencies(motion_pub ${PROJECT_NAME}_generate_messages_cpp)
 
+add_executable(motion_stop src/motion_stop.cpp)
+target_link_libraries(motion_stop ${catkin_LIBRARIES})
 
 #############
 ## Install ##

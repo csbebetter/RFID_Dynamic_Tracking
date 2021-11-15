@@ -9,6 +9,7 @@
 #include <string>
 #include "phase_processing.hpp"
 #include "rfid_reader/DataDev.h"
+#include <geometry_msgs/Twist.h>
 
 using namespace LLRP;
 
@@ -32,7 +33,7 @@ public:
 
 	ros::NodeHandle n;
 	ros::Publisher DataVec_pub = n.advertise<rfid_reader::DataDev>("/DataDev_info", 30);
-	
+	ros::Publisher stop_publish = n.advertise<geometry_msgs::Twist>("/cmd_vel", 30);
 
 	/** Verbose level, incremented by each -v on command line */
 	//int        					bDone = 0;
