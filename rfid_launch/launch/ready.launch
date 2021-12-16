@@ -1,0 +1,15 @@
+<launch>
+	<!-- Speed PID -->
+	<param name = "v_Kp" type = "double" value = "0.0015" />
+	<param name = "v_Ki" type = "double" value = "0.0012" />
+	<param name = "v_Kd" type = "double" value = "0.0003" />
+	<!-- Angular velocity PID -->
+	<param name = "a_Kp" type = "double" value = "0.0016" />
+	<param name = "a_Ki" type = "double" value = "0.0047" />
+	<param name = "a_Kd" type = "double" value = "0.0009" />
+	<!-- Start related nodes -->
+	<!--node pkg="tracer_bringup" name="bringup_can2usb" type="bringup_can2usb.bash"/-->
+	<!--include file="$(find tracer_bringup)/launch/tracer_robot_base.launch" /-->
+	<node pkg="rfid_reader" name="motion_pub" type="motion_pub" output="screen"/>
+
+</launch>

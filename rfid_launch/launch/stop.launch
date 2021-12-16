@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="rfid_reader" name="motion_stop" type="motion_stop" />
+</launch>
