@@ -37,6 +37,7 @@ typedef struct pid_contral_str {
 	float P_v, I_v, D_v;   //平动速度调整的比例、积分和微分参数
 	float P_w, I_w, D_w;   //旋转速度调整的比例、积分和微分参数
 }pid_contral_str;
+
 typedef struct pid_data_str {
 	float m;               //一个积分步骤中使用的相位测量数,本代码中暂时使用全部相位测量数来计算（m=t-1）
 	float v_data;
@@ -95,10 +96,8 @@ float pid_deal_w(float a_data , unsigned long long timestamp)
 	return pid_data.w;
 }
 
-void pid_pidzero()
+void pid_pidzero(double v_kp,double v_ki,double v_kd,double a_kp,double a_ki,double a_kd)
 {
-	//pid_contral.P_v = 0.08; pid_contral.I_v = 0.001; pid_contral.D_v = 0.003;
-	//pid_contral.P_w = 0.6; pid_contral.I_w = 0.008; pid_contral.D_w = 0.006;
-	pid_contral.P_v = 0.000; pid_contral.I_v = 0.000; pid_contral.D_v = 0.000;
-	pid_contral.P_w = 0.0005; pid_contral.I_w = 0.0001; pid_contral.D_w = 0.0001;
+	pid_contral.P_v = v_kp; pid_contral.I_v = v_ki; pid_contral.D_v = v_kd;
+	pid_contral.P_w = a_kp; pid_contral.I_w = a_ki; pid_contral.D_w = a_kd;
 }

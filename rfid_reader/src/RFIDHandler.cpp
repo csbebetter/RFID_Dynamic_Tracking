@@ -188,7 +188,7 @@ char *                        pReaderHostName)
 							if (0 == startROSpec())
 							{
 								rc = 7;
-								if (0 == awaitAndPrintReport(10))
+								if (0 == awaitAndPrintReport(30))
 								{
 									rc = 8;
 									if (0 == stopROSpec())
@@ -1995,7 +1995,8 @@ CTagReportData *              pTagReportData)
 				rfid_reader::DataDev d;
 				d.v_data =  leftDataVec.back().phase + rightDataVec[leftDataVec.size()-1].phase - 
 							rightDataVec[0].phase - leftDataVec[0].phase;
-				d.a_data =	leftDataVec.back().phase - rightDataVec[leftDataVec.size()-1].phase;
+				d.a_data =	 -(leftDataVec.back().phase - leftDataVec[0].phase
+							-rightDataVec[leftDataVec.size()-1].phase + rightDataVec[0].phase);
 				d.time_data = leftDataVec.back().timestamp - leftDataVec[0].timestamp;
 				printf("left:v=%ld,w=%ld,t=%ld\n",d.v_data,d.a_data,d.time_data);
 				DataVec_pub.publish(d);
@@ -2020,7 +2021,8 @@ CTagReportData *              pTagReportData)
 			{
 				rfid_reader::DataDev d;
 				d.v_data =  rightDataVec.back().phase + leftDataVec[leftDataVec.size()-1].phase - rightDataVec[0].phase - leftDataVec[0].phase;
-				d.a_data =	leftDataVec[rightDataVec.size()-1].phase - rightDataVec.back().phase;
+				d.a_data =	-(leftDataVec[rightDataVec.size()-1].phase - leftDataVec[0].phase
+							- rightDataVec.back().phase + rightDataVec[0].phase);
 				d.time_data = rightDataVec.back().timestamp - rightDataVec[0].timestamp;
 				printf("right:v=%ld,w=%ld,t=%ld\n",d.v_data,d.a_data,d.time_data);
 				DataVec_pub.publish(d);

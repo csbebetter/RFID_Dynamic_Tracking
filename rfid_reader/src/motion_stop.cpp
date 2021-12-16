@@ -5,7 +5,7 @@ int main(int argc, char **argv)
 {
 	ros::init(argc, argv, "robot_stop");
 	ros::NodeHandle n;
-	ros::Publisher motion_stop_pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 30);
+	ros::Publisher motion_stop_pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 5);
 	ros::Rate loop_rate(10);
 
 	while (ros::ok())
